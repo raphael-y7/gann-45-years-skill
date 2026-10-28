@@ -224,4 +224,5 @@ All numeric criteria in the book (3–5 point stops, the 5-point breakout tolera
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](./LICENSE)
+
