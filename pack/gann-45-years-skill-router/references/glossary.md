@@ -523,7 +523,7 @@
   related: [g05, g08, g17]
   why_it_matters: |
     task-11 选股卡的方法论名；来源较薄（3个案例），卡片应标注证据密度，作为参考级输出。
-  tags: [term, stock-selection-skill]
+  tags: [term, stock-selection]
 
 - id: g25
   term: 成交量确认

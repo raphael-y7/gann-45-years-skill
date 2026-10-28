@@ -1,38 +1,38 @@
 {
   "tool": "cangjie-tools v2.5.0",
   "published_hashes": {
-    "references\\capabilities\\gann-pair-trade.md": "82ece30337ec9b6dd314575402e24e3eb5f285bc26bb153a577e250a8538a33f",
+    "references\\capabilities\\gann-pair-trade-skill.md": "82ece30337ec9b6dd314575402e24e3eb5f285bc26bb153a577e250a8538a33f",
     "references\\capabilities\\gann-percentage-levels-skill.md": "c3de8e970e7555d4261fccafe56dbcb713a7133d0ad44ecf8fe833696da93d66",
     "references\\capabilities\\gann-pyramid-profit-protect-skill.md": "36f972a9c8576e84e95e42b79a0733ff2204c0f927dc696020aa847327fddf93",
     "references\\capabilities\\gann-swing-charts-skill.md": "316299508d2d613cedd0163ba426975ca406c2cface2bf31dddad14874ff19c8",
     "references\\capabilities\\gann-time-cycle-calendar-skill.md": "3fa52ba353846092e1f02c928061d66736e947a387b0f65ba8d5f46ef182c963",
     "references\\capabilities\\gann-trade-risk-checklist-skill.md": "2d2baa3b643b31c1032a3fb12d4a4d37f560c3403186e8af7f2e0f3860378564",
     "references\\capabilities\\gann-trend-safe-entry-skill.md": "1c0d0609a52edb265521511c858c87a41ea3299b8cae8b4222226b2782a38224",
-    "references\\capabilities\\gann-volume-confirm.md": "719b827499b3f93ae85625d72a94927375ad6c85804a772596ecf4c1ea379233",
-    "references\\capability-index.md": "37e7234c86d0d3016e2d24cbac19194d992de992d30b9b9bf90845f45e349d63",
+    "references\\capabilities\\gann-volume-confirm-skill.md": "719b827499b3f93ae85625d72a94927375ad6c85804a772596ecf4c1ea379233",
+    "references\\capability-index.md": "bfd7df7a60fe8a8b1c07707023bf82da4a1ad05ca8265b11ced596c25b8a3ee2",
     "references\\cheatsheet.md": "a8caa74b9c97d6062b76448e6db7cace0cf351f47650e59226cb7b63f2b48494",
     "references\\glossary.md": "016bc9e5a401ef0fc0b1eec6b1b36604f6194e9a4699c3f625cf7c25ce881d59",
     "references\\overview.md": "b73eedb98768d9bbfb9a2e3ef9850a09680e55db6f4515135d5bf06d7a82ebe0",
-    "SKILL.md": "695112510c721558a5591d258efe63ef2edc85f24a0e40ed55f2cd4e626d8f66"
+    "SKILL.md": "a6d747b3b57be97ad82903e7eaecc9c29da8d0d13d29ee941f1aca92068db7db"
   },
   "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
-  "bundle_id": "bundle.gann-45-years-skill-45-years",
-  "bundle_sha256": "7e96d70586b810a6b1e61e8ebfccb531475aad7a9fef944c4a633cbf5c86e7e3",
+  "bundle_id": "bundle.gann-45-years-skill-wall-street-45-years",
+  "bundle_sha256": "a12727c2a6b2658edd663c1052d83ecf6585a2849f1a925f1037aa4df95a417f",
   "variant": "single",
-  "run_id": "run-20261024-175744-c82255",
+  "run_id": "run-20261028-211306-9241d1",
   "decision": {
     "schema_version": 1,
-    "requested": "auto",
+    "requested": "single",
     "selected": "single",
     "decision_policy": "single-first-v1",
     "skill_budget": 8,
     "promoted_count": 6,
     "capability_count": 8,
     "reasons": [
-      "6 个能力通过晋级门，但触发验证阈值为 TBD-after-baseline 尚未启用；按 single-first 原则先推荐 single，拆分由使用证据驱动"
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
     ],
     "alternative": "compact pack（1 个来源路由入口 + 6 个晋级 Skill，共 7 个可发现入口）",
-    "user_confirmed": false,
+    "user_confirmed": true,
     "preserve_strategy_on_update": true
   }
 }

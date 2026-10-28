@@ -1,0 +1,77 @@
+{
+ "skill": "gann-45-years-skill",
+ "version": "0.1.0",
+ "source": "江恩华尔街45年（William D. Gann, 1949）",
+ "test_cases": [
+  {
+   "id": "should-trigger-01",
+   "type": "should_trigger",
+   "prompt": "我准备买这只股，现价24块，止损想设在21块，账户一共5万，帮我算算买多少合适",
+   "expected_behavior": "调用风控自检能力：单笔风险=5000，股数=5000/3约1666股，附止损纪律",
+   "notes": "正面：开仓前风控"
+  },
+  {
+   "id": "should-trigger-02",
+   "type": "should_trigger",
+   "prompt": "某股历史最高68.5、最低21.4，帮我算一下中间有哪些支撑和阻力位",
+   "expected_behavior": "调用百分比价位能力：中点44.95及乘法百分比档位表",
+   "notes": "正面：百分比价位"
+  },
+  {
+   "id": "should-trigger-03",
+   "type": "should_trigger",
+   "prompt": "市场2月5号见了底，接下来到什么时间窗口要小心",
+   "expected_behavior": "调用时间周期能力：九级天数窗口清单+重标定限定",
+   "notes": "正面：时间窗口"
+  },
+  {
+   "id": "should-trigger-04",
+   "type": "should_trigger",
+   "prompt": "给你一段日线高低价数据，帮我画出3日摆动图看看现在是什么信号",
+   "expected_behavior": "调用摆动图能力：忽略不超过2日的反向运动，给破3日底或穿3日头信号",
+   "notes": "正面：图表工具"
+  },
+  {
+   "id": "should-trigger-05",
+   "type": "should_trigger",
+   "prompt": "现在行情分化，我看好强势的A、看空弱势的B，想一多一空做，怎么设计仓位和风险",
+   "expected_behavior": "调用配对能力（经路由）：双腿止损+组合最大亏损",
+   "notes": "正面：配对（router 可达）"
+  },
+  {
+   "id": "should-not-trigger-01",
+   "type": "should_not_trigger",
+   "prompt": "明天大盘会涨吗",
+   "expected_behavior": "不应调用：本书不预测方向，只给判定规则与确认信号",
+   "notes": "诱饵：预测请求"
+  },
+  {
+   "id": "should-not-trigger-02",
+   "type": "should_not_trigger",
+   "prompt": "帮我安排下周三的会议时间",
+   "expected_behavior": "不应调用：与投资分析无关",
+   "notes": "诱饵：无关任务"
+  },
+  {
+   "id": "should-not-trigger-03",
+   "type": "should_not_trigger",
+   "prompt": "帮我算一下斐波那契38.2%回撤位在哪",
+   "expected_behavior": "不应按江恩口径硬算：说明本书百分比体系与斐氏不同源",
+   "notes": "诱饵：异源方法"
+  },
+  {
+   "id": "edge-01",
+   "type": "edge_case",
+   "prompt": "我随便买了100块的刮刮乐，怎么控制风险",
+   "expected_behavior": "不应调用：非股票交易，无对应能力",
+   "notes": "边界：彩票非股票"
+  },
+  {
+   "id": "edge-02",
+   "type": "edge_case",
+   "prompt": "用3日均线分析一下走势",
+   "expected_behavior": "应调用摆动图能力并纠正口径：3日图是摆动图不是均线",
+   "notes": "边界：口径混淆"
+  }
+ ]
+}

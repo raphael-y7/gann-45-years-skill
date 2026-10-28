@@ -8,7 +8,7 @@ description: |
 metadata:
   cangjie.generated-by: cangjie-tools v2.5.0
   cangjie.variant: single
-  cangjie.bundle-id: bundle.gann-45-years-skill-45-years
+  cangjie.bundle-id: bundle.gann-45-years-skill-wall-street-45-years
   cangjie.capability-count: 8
   cangjie.entrypoint-count: 1
 ---

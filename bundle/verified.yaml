@@ -1,0 +1,316 @@
+schema_version: 1
+bundle_id: bundle.gann-45-years-skill-wall-street-45-years
+book:
+  title: 江恩华尔街45年（45 Years in Wall Street）
+  author: "[美] 威廉·D·江恩（William D. Gann）著；陈鑫 译"
+  source_pack: books/gann-45-years/合并转写稿.md
+  baseline_tag: 1949-original/2010-chenxin-translation
+
+entry:
+  name: gann-45-years-skill
+  description: |
+    江恩《华尔街45年》(1949) 方法论入口：以"时间、价格、成交量"三因素与可复算规则辅助股票投资分析。
+    覆盖八项能力：交易风控自检（24条永恒规则+资本10等分）、百分比阻力位计算、趋势确认与最安全买卖点、
+    时间周期变盘日历、3日图/9点摆动图、成交量确认、金字塔加码与利润保护、多空配对。
+    所有点位参数为1949年前道指尺度，现代使用须按百分比/波动率重标定；历史回验为事后解释，不构成预测有效性承诺。
+  core_principles:
+    - 先确认趋势再行动：更高的高点+更高的低点=多头；破3日底/9点摆动极值是趋势变化第一信号
+    - 50%是最重要的支撑阻力位：从极限高低价按百分比外推价位网络，中点必算
+    - 时间因素重于价格反转：调整时间3周→6~7周→60~65天层级；变盘前有日历窗口可查
+    - 资本10等分、单笔风险≤10%、止损单永远跟随且永不撤销
+    - 永不摊平、永不对冲、永不让盈利变损失；预期利润≤3~5点不交易
+    - 人性（希望/恐惧/延误/过度交易）是最大亏损来源：规则化执行高于主观判断
+  out_of_scope:
+    - 不预测市场（给判定规则与确认信号，不给"必定涨跌"结论）
+    - 不覆盖现代衍生品定价（1949年期权/权证口径仅作原理参考）
+    - 不提供1949年后美股数据；时间/点位参数需用用户自有市场数据重标定
+    - 不含江恩角度线/江恩矩阵等本书未包含的工具
+  stop_conditions:
+    - 用户市场数据不足（无历史极限高低点/日线序列）时，先补数再套规则，不猜值
+    - 规则信号互相矛盾时（如价格破位但时间窗口未到），如实报告矛盾并列出两侧证据，不强行给单边结论
+    - 涉及"把全部资金投入"类请求，直接触发风控自检卡的红线条款
+
+router_entry:
+  name: gann-45-years-skill-router
+  description: |
+    《江恩华尔街45年》来源路由：当请求属于本书方法论但不确定细分能力时进入（如"江恩怎么说成交量""江恩的配对交易"），
+    路由到成交量确认、多空配对两张能力卡及全书参考内容；趋势/风控/百分比/时间周期/摆动图/加码六类高频意图
+    由对应晋级 Skill 直接承接，不经此路由。
+
+promotion_budget: 8
+
+capabilities:
+  - capability_id: cap.gann-45-years-skill.trade-risk-checklist
+    revision: 1
+    status: active
+    slug: gann-trade-risk-checklist-skill
+    title: 交易风控与资金管理自检（24条永恒规则）
+    importance: critical
+    importance_rationale: task-04 最高优先；原书将"没有止损+过度交易"列为华尔街90%以上失败的来源，防破产底线；所有条款为百分比口径，跨市场跨时代可直接落地
+    one_liner: 任何一笔交易：风险≤资本1/10、止损3~5点同时设置且永不撤销、不摊平不对冲、预期利润≤3~5点不进场
+    intents:
+      - 开仓前检查这笔交易的风控是否合规
+      - 计算单笔仓位上限与止损位
+      - 亏损后复盘违反了哪条纪律
+      - 收到追保通知/浮盈后决定止损怎么放
+    keywords: [风控, 仓位, 止损, 止损单, 资金管理, 24条规则, 摊平, 均分损失, 加保证金, risk, stop-loss, position-sizing, discipline]
+    also_read: [cap.gann-45-years-skill.pyramid-profit-protect, cap.gann-45-years-skill.trend-safe-entry]
+    card: cards/gann-trade-risk-checklist-skill.md
+    frontmatter:
+      description: |
+        用于任何一笔股票交易的开仓前风控自检与仓位计算（江恩24条永恒规则）。何时用：下单前核对仓位/止损/纪律，
+        浮盈后决定止损上移，亏损后复盘违规条款，收到追保通知时。语言信号："这笔交易我该买多少""止损放哪""帮我检查这个仓位"。
+        不用于选股、择时、算阻力位（相邻能力承接）。核心红线：单笔风险≤资本1/10；止损单与交易同时设置且永不撤销；
+        永不摊平、永不对冲；预期利润≤3~5点不做。
+      tags: [decision, risk-control, checklist, trading]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第2章 24条永恒的规则；资本的安全；止损单；转变观念；过度交易；保护你的盈利；期待多少盈利；如何回应追加保证金的通知；人的因素（L661-787）
+      - source_id: src-gann45-transcript
+        location: 第1章 为什么你会在股市里输钱（L505-515）；第14章 大炒家教训（L4499-4519）
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 每笔交易必过；独立于市场与时代；近邻负例=不负责买卖点选择（U3）与加码节奏（U7）
+
+  - capability_id: cap.gann-45-years-skill.percentage-levels
+    revision: 1
+    status: active
+    slug: gann-percentage-levels-skill
+    title: 百分比阻力位与50%中点计算
+    importance: high
+    importance_rationale: task-02；作者自称"最伟大的发现之一"；全书唯一完全算法化可移植的价格规则，历史顶底回验密度最高（1929顶386.10全程演示）
+    one_liner: 一律从极限最高价/最低价起算：中点=(H+L)/2最重要，其次低点+100%倍数、25%、12.5%、33⅓/66⅔%；跌破50%未站稳=极弱看75%位
+    intents:
+      - 计算某指数/个股的支撑位与阻力位价位表
+      - 计算极限高低价之间的50%中点
+      - 判断某价位为何反复出现顶底（汇聚区统计）
+      - 判断跌破50%后的下一目标位
+    keywords: [百分比, 阻力位, 支撑位, 50%, 中点, 回撤, 百分比回撤, 极限最高价, 极限最低价, percentage, retracement, support, resistance, midpoint, confluence]
+    also_read: [cap.gann-45-years-skill.trend-safe-entry, cap.gann-45-years-skill.time-cycle-calendar]
+    card: cards/gann-percentage-levels-skill.md
+    frontmatter:
+      description: |
+        从极限最高价/最低价按固定百分比计算支撑/阻力价位表与50%中点（江恩"最伟大的发现"）。何时用：用户问"这个位置有什么支撑/压力"
+        "算一下回撤位""为什么这个价位反复做顶做底"。语言信号：百分比、回撤、阻力位、支撑位、中点、retracement。
+        不用于判断趋势方向或择时（相邻能力承接）；起算点必须是极限高低价而非任意拐点。
+    tags: [calculation, price-level, support-resistance]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第2章 规则3（L555-557）；第4章 全章（L817-973）；第9章 汇聚区算例（L4069-4160）
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 输入输出全数值化可复算；近邻负例=不做时间窗口（U4）、不判定趋势（U3）
+
+  - capability_id: cap.gann-45-years-skill.trend-safe-entry
+    revision: 1
+    status: active
+    slug: gann-trend-safe-entry-skill
+    title: 趋势确认与最安全买卖点判定
+    importance: critical
+    importance_rationale: task-01+task-03 决策主干；回答"能不能买/在哪买/止损放哪"；1942年三重底等书内实例完整走通过判定链
+    one_liner: 三层一致才动手（指数→股群→个股）：HH+HL=多头；最安全买点=次级调整在更高底获支撑后穿越首轮升势顶，止损放次级底下方
+    intents:
+      - 判断当前市场/个股趋势方向（多头/空头/区间）
+      - 找最安全的买入点和卖出点及其止损位
+      - 评估双底/三重底/顶底互换形态是否成立
+      - 判断突破是否有效（5点容差）
+    keywords: [趋势, 高点低点, 双底, 三重底, 顶底互换, 次级调整, 次级反弹, 突破, 最安全买点, trend, double-bottom, breakout, safe-entry, confirmation]
+    also_read: [cap.gann-45-years-skill.swing-charts, cap.gann-45-years-skill.percentage-levels, cap.gann-45-years-skill.trade-risk-checklist]
+    card: cards/gann-trend-safe-entry-skill.md
+    frontmatter:
+      description: |
+        判定趋势方向并给出最安全买卖点与止损位（江恩规则1/2/9/10/11整合）。何时用：用户问"现在能买吗""趋势是多是空"
+        "这是不是双底""突破算不算有效"。语言信号：趋势、双底、三重底、突破、回调买入、trend、breakout、entry。
+        只按已确认信号回答，不做预测；需要时间窗口时转时间周期日历能力。
+      tags: [decision, trend, entry-signal]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第2章 规则1/2/9/10/11（L533-653）；第7章 3日或更久的运动（L1592-1640）；第3章（L789-815）
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 决策主干；近邻负例=不算百分比价位表（U2）、不生成日历（U4）、不负责仓位大小（U1）
+
+  - capability_id: cap.gann-45-years-skill.time-cycle-calendar
+    revision: 1
+    status: active
+    slug: gann-time-cycle-calendar-skill
+    title: 时间周期变盘日历
+    importance: high
+    importance_rationale: task-05+task-08；江恩特色维度（"时间的变化比价格反转更重要"）；参数全部成表可机械化生成日历；方法层（自有数据重建）完整可迁移
+    one_liner: 从重要顶/底起算九级天数窗口{7~12…175~185天}+月周期{15/22/34/42/48/49}+周年纪念日+季节日期表；调整时间层级3周→6~7周→60~65天
+    intents:
+      - 生成未来一段时间的变盘时间窗口日历
+      - 判断当前调整/反弹的时间是否到位
+      - 判断时间是否"平衡过度"（本次超过前次=转势信号）
+      - 用自有市场摆动记录重建时间周期参数
+    keywords: [时间周期, 变盘, 时间窗口, 周年纪念日, 季节性, 平衡过度, 调整时间, time-cycle, anniversary, seasonality, overbalanced]
+    also_read: [cap.gann-45-years-skill.swing-charts, cap.gann-45-years-skill.trend-safe-entry]
+    card: cards/gann-time-cycle-calendar-skill.md
+    frontmatter:
+      description: |
+        生成变盘时间窗口日历与调整时间层级判断（江恩规则4/8/10+第5/8/9章）。何时用：用户问"接下来哪些日子要变盘"
+        "这波调整多久算到位""时间上平衡过度了吗"。语言信号：时间周期、变盘日、周年纪念日、调整几周、time-cycle、timing。
+        只输出窗口清单与到位判断，不预测方向；原书参数为1949年前道指归纳，正式使用需以自有数据重建。
+      tags: [calculation, timing, calendar]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第2章 规则4/8/10（L559-641）；第5章 全章；第6章（L1271-1577）；第8章 月份统计（L3724-3937）；第9章 周年纪念日（L3977-4047）
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 时间维度独立意图明确（"什么时候"）；近邻负例=不给价格买卖点（U2/U3）；过拟合警示进 B 段
+
+  - capability_id: cap.gann-45-years-skill.swing-charts
+    revision: 1
+    status: active
+    slug: gann-swing-charts-skill
+    title: 3日图与9点摆动图维护及信号
+    importance: high
+    importance_rationale: task-06+task-07；U3/U4 的标准化信号源；维护口径在 ch7 逐条给出并用 1940-1949 九年序列完整示范；464次/292次统计给出幅度概率
+    one_liner: 3日图只记≥3日的运动（破3日底=看跌、穿3日头=看涨）；9点图只记≥9点的摆动（反弹不足9点=弱势）；点位阈值须按现代波动率重标定
+    intents:
+      - 用日线数据维护3日摆动图并读取信号
+      - 维护9点摆动图并判断强弱
+      - 评估当前摆动幅度处于历史分布的什么位置（9~21点占50%+）
+      - 选择该用月图/周图/日图/摆动图哪一层
+    keywords: [3日图, 9点图, 摆动图, 摆动, 趋势线, 波动过滤, swing-chart, 3-day-chart, 9-point, swing]
+    also_read: [cap.gann-45-years-skill.trend-safe-entry, cap.gann-45-years-skill.time-cycle-calendar]
+    card: cards/gann-swing-charts-skill.md
+    frontmatter:
+      description: |
+        江恩3日摆动图与9点摆动图的维护规则与信号读取（含月/周/日图分层选择）。只产出图表信号与强弱结论，不做开仓决策与仓位。
+        何时用：用户提供日线高低价序列要求画摆动图、问"3日图破位了吗""9点图什么信号""该用周线还是月线"。
+        语言信号：3日图、9点、摆动、swing chart。需要完整买卖决策时转趋势确认能力，仓位转风控能力。
+      tags: [procedure, charting, swing]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第7章 维持3日图的规则+3日运动的例子（L1612-1640）；9点节+统计（L3074-3670）；第2章 规则9（L625）；书末13张整页图口径（L4685-4725）
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 工具型高频复用；近邻负例=只维护图表与读信号，不做资金管理（U1）与时间日历（U4）
+
+  - capability_id: cap.gann-45-years-skill.volume-confirm
+    revision: 1
+    status: active
+    slug: gann-volume-confirm-skill
+    title: 成交量确认规则（放量见顶/枯竭见底）
+    importance: medium
+    importance_rationale: task-09；三因素之一的确认维度；判据明确但原书限定"必须与其他规则结合，单独不构成信号"，独立触发意图弱于前五项
+    one_liner: 老卖出位+创纪录月量=头部信号；长期下跌后地量=打底信号；牛市最后一年天量=终点前兆——只作确认，不作单独信号
+    intents:
+      - 用成交量确认价格信号的可靠性
+      - 判断放量/缩量在顶部区还是底部区的含义
+    keywords: [成交量, 放量, 缩量, 地量, 量价, volume, climax, exhaustion]
+    also_read: [cap.gann-45-years-skill.trend-safe-entry, cap.gann-45-years-skill.percentage-levels]
+    card: cards/gann-volume-confirm-skill.md
+    frontmatter:
+      description: |
+        江恩成交量确认规则：高位放量=头部、长期下跌后地量=底部、牛市末年天量=终点。何时用：用户问"放量创新高怎么看"
+        "缩量下跌说明什么"。仅作第三维确认，须与趋势/价位规则联用；单独的量能问题也在此回答。
+      tags: [rule, volume, confirmation]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第2章 规则7（L577-579）；第10章 全章含1936-1949量表（L4183-4260）
+    promotion:
+      destination: router
+      gate:
+        independent_intent: false
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 用户极少脱离价格/趋势单独问量能；作为能力卡经来源路由入口到达，与 U3/U2 联动
+
+  - capability_id: cap.gann-45-years-skill.pyramid-profit-protect
+    revision: 1
+    status: active
+    slug: gann-pyramid-profit-protect-skill
+    title: 金字塔加码与利润保护规程
+    importance: high
+    importance_rationale: task-10；持仓盈利阶段的核心操作（何时加、加多少、止损跟到哪）；通用汽车全程案例演示按"调整指纹"加码跟随主趋势数年
+    one_liner: 先测该股"调整指纹"（首次重要调整的点数与时长），此后按指纹在调整处加码或突破处加码；浮盈3点止损上移至成本，利润越厚止损越宽（让出账面利润不伤资本）
+    intents:
+      - 已有盈利持仓时制定加码计划
+      - 决定止损跟随到什么位置
+      - 判断现在是否是错误时点的加码
+    keywords: [加码, 加仓, 金字塔, 止损上移, 移动止损, 利润保护, 让利润增长, pyramiding, trailing-stop]
+    also_read: [cap.gann-45-years-skill.trade-risk-checklist, cap.gann-45-years-skill.trend-safe-entry]
+    card: cards/gann-pyramid-profit-protect-skill.md
+    frontmatter:
+      description: |
+        江恩加码与利润保护规程。何时用：用户持仓浮盈后问"要不要加仓""止损该跟到哪""利润怎么保"。
+        语言信号：加码、加仓、金字塔、移动止损、让利润奔跑。开仓前检查转风控自检能力；方向判断转趋势确认能力。
+      tags: [procedure, pyramiding, trailing-stop]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第2章 何时加码+保护你的盈利（L731-761）；24规则 #4/#20/#21（L671-705）
+    promotion:
+      destination: promoted
+      gate:
+        independent_intent: true
+        independent_contract: true
+        independent_run: true
+        independent_reuse: true
+        independent_eval: true
+      notes: 持仓管理与开仓自检（U1）触发时刻不同、契约不同；近邻负例=不做开仓前检查
+
+  - capability_id: cap.gann-45-years-skill.pair-trade
+    revision: 1
+    status: active
+    slug: gann-pair-trade-skill
+    title: 错流市多空配对（买强空弱）
+    importance: medium
+    importance_rationale: task-11 配对半区；分化市况的双向结构可预先锁定组合最大亏损；来源仅一例完整演示（百事/无线电），独立触发频率低
+    one_liner: 高点下移的弱势股高位放空+低位获支撑的强势股买入，双向止损使组合最大亏损预先可算；目标用百分比规则管理（低价100%/回撤50%）
+    intents:
+      - 在分化/错流行情中同时安排一多一空
+      - 预先计算配对组合的最大亏损
+    keywords: [配对, 多空对冲, 买强空弱, 错流, pair-trading, long-short]
+    also_read: [cap.gann-45-years-skill.percentage-levels, cap.gann-45-years-skill.trend-safe-entry]
+    card: cards/gann-pair-trade-skill.md
+    frontmatter:
+      description: |
+        江恩错流市多空配对流程（买强空弱+组合风险预算）。何时用：用户明确要同时做一多一空两只股票、或问分化行情怎么双向操作。
+        注意与"永不对冲"禁令的区别：本流程是两只独立趋势股票的双向开仓，不是对同一持仓的对冲替代认赔。
+      tags: [procedure, pair-trading, long-short]
+    source_evidence:
+      - source_id: src-gann45-transcript
+        location: 第3章 买入一只股票而做空另一只+美国无线电和百事可乐（L789-815）
+    promotion:
+      destination: router
+      gate:
+        independent_intent: false
+        independent_contract: true
+        independent_run: true
+        independent_reuse: false
+        independent_eval: true
+      notes: 低频、样本单薄；经来源路由入口到达；B 段必须写明与 24 规则 #22"永不对冲"的边界区分
