@@ -1,0 +1,45 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "capability-destinations.json": "b080ad18dc92fa816386d501adac037da9680e5cc483430ef3b9cef2e4391351",
+    "gann-percentage-levels-skill\\SKILL.md": "2d78d2bac1aa048e0c51ef73fb10c438889c1638a5555f2e9eae4f0f13b50e48",
+    "gann-pyramid-profit-protect-skill\\SKILL.md": "5b973ab1f13ff942a3a1b7db924a0add22ebc19a50abd7138435c496cbe5fd42",
+    "gann-swing-charts-skill\\SKILL.md": "8a47b1a82888b407e4117a2f1000c872a77e8464b8bee107182179747e3c0324",
+    "gann-time-cycle-calendar-skill\\SKILL.md": "cf461e53bc3dba42b81cf45b561eb7a9c38454f4bc67fe4ddd646d27b04f6e84",
+    "gann-trade-risk-checklist-skill\\SKILL.md": "9ec3d88015e744e491ec7ab19ff1aabf2fa32828a56f6d99b9ccfa66ae322312",
+    "gann-trend-safe-entry-skill\\SKILL.md": "ede4367b7b0fffd5df2585b76a34a687d3200046c6b9a0a6b396c642867149c3",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-pair-trade.md": "82ece30337ec9b6dd314575402e24e3eb5f285bc26bb153a577e250a8538a33f",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-percentage-levels-skill.md": "c3de8e970e7555d4261fccafe56dbcb713a7133d0ad44ecf8fe833696da93d66",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-pyramid-profit-protect-skill.md": "36f972a9c8576e84e95e42b79a0733ff2204c0f927dc696020aa847327fddf93",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-swing-charts-skill.md": "316299508d2d613cedd0163ba426975ca406c2cface2bf31dddad14874ff19c8",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-time-cycle-calendar-skill.md": "3fa52ba353846092e1f02c928061d66736e947a387b0f65ba8d5f46ef182c963",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-trade-risk-checklist-skill.md": "2d2baa3b643b31c1032a3fb12d4a4d37f560c3403186e8af7f2e0f3860378564",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-trend-safe-entry-skill.md": "1c0d0609a52edb265521511c858c87a41ea3299b8cae8b4222226b2782a38224",
+    "gann-45-years-skill-router\\references\\capabilities\\gann-volume-confirm.md": "719b827499b3f93ae85625d72a94927375ad6c85804a772596ecf4c1ea379233",
+    "gann-45-years-skill-router\\references\\capability-index.md": "37e7234c86d0d3016e2d24cbac19194d992de992d30b9b9bf90845f45e349d63",
+    "gann-45-years-skill-router\\references\\cheatsheet.md": "a8caa74b9c97d6062b76448e6db7cace0cf351f47650e59226cb7b63f2b48494",
+    "gann-45-years-skill-router\\references\\glossary.md": "016bc9e5a401ef0fc0b1eec6b1b36604f6194e9a4699c3f625cf7c25ce881d59",
+    "gann-45-years-skill-router\\references\\overview.md": "b73eedb98768d9bbfb9a2e3ef9850a09680e55db6f4515135d5bf06d7a82ebe0",
+    "gann-45-years-skill-router\\SKILL.md": "5d3b25f97474769fbdbc81bfb2f26bf5c9685762d54d61209de610b21bb183c4"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.gann-45-years-skill-wall-street-45-years",
+  "bundle_sha256": "7e96d70586b810a6b1e61e8ebfccb531475aad7a9fef944c4a633cbf5c86e7e3",
+  "variant": "pack",
+  "run_id": "run-20261024-181058-aa6097",
+  "decision": {
+    "schema_version": 1,
+    "requested": "pack",
+    "selected": "pack",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 6,
+    "capability_count": 8,
+    "reasons": [
+      "用户显式选择 pack，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "single（1 个入口 + 8 张内部能力卡）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generated_by": "cangjie-tools v2.5.0",
+  "bundle_id": "bundle.gann-45-years-skill-wall-street-45-years",
+  "router_entrypoint": "gann-45-years-skill-router",
+  "entrypoint_count": 7,
+  "capability_count": 8,
+  "destinations": {
+    "cap.gann-45-years-skill.trade-risk-checklist": {
+      "promoted_to": "gann-trade-risk-checklist-skill",
+      "router_view": "gann-45-years-skill-router/references/capabilities/gann-trade-risk-checklist-skill.md"
+    },
+    "cap.gann-45-years-skill.percentage-levels": {
+      "promoted_to": "gann-percentage-levels-skill",
+      "router_view": "gann-45-years-skill-router/references/capabilities/gann-percentage-levels-skill.md"
+    },
+    "cap.gann-45-years-skill.trend-safe-entry": {
+      "promoted_to": "gann-trend-safe-entry-skill",
+      "router_view": "gann-45-years-skill-router/references/capabilities/gann-trend-safe-entry-skill.md"
+    },
+    "cap.gann-45-years-skill.time-cycle-calendar": {
+      "promoted_to": "gann-time-cycle-calendar-skill",
+      "router_view": "gann-45-years-skill-router/references/capabilities/gann-time-cycle-calendar-skill.md"
+    },
+    "cap.gann-45-years-skill.swing-charts": {
+      "promoted_to": "gann-swing-charts-skill",
+      "router_view": "gann-45-years-skill-router/references/capabilities/gann-swing-charts-skill.md"
+    },
+    "cap.gann-45-years-skill.volume-confirm": {
+      "served_by": "gann-45-years-skill-router",
+      "card": "gann-45-years-skill-router/references/capabilities/gann-volume-confirm-skill.md"
+    },
+    "cap.gann-45-years-skill.pyramid-profit-protect": {
+      "promoted_to": "gann-pyramid-profit-protect-skill",
+      "router_view": "gann-45-years-skill-router/references/capabilities/gann-pyramid-profit-protect-skill.md"
+    },
+    "cap.gann-45-years-skill.pair-trade": {
+      "served_by": "gann-45-years-skill-router",
+      "card": "gann-45-years-skill-router/references/capabilities/gann-pair-trade-skill.md"
+    }
+  }
+}
