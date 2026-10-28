@@ -213,7 +213,7 @@ Ask: "How many shares should I buy on this trade, and where does the stop go?" I
 
 ## Sources
 
-- *45 Years in Wall Street*
+- *45 Years in Wall Street* by William D. Gann
 - Distilled from the whole book, producing 8 capability cards
 
 ## Notice
