@@ -109,7 +109,7 @@ This book adds one more layer of selection: what lasts is the "risk-discipline l
 
 ## Testing and verification
 
-This repository publishes the evaluation material from the audit directory alongside the skills: `evals/test-prompts/` holds the per-entry trigger cases, `evals/trigger-suite.json` and `evals/trigger-blind.json` are the trigger test set and the blind-run record, `evals/output-cases.md` holds the output-evaluation scenarios and fixed assertions, and `evals/test-results.md` is the item-by-item scoring and rework log — including what did not work, not just the passes. The test host was ZCode / GLM-5.3, and the blind runs were executed by an independent sub-agent that took no part in the distillation and could not see the expected answers or assertions.
+This repository ships the evaluation material together with the skills: the trigger cases live in each skill directory's `test-prompts.json`, and the item-by-item scoring and rework log is `test-results.md` at the repository root — including what did not work, not just the passes. The test host was ZCode / GLM-5.3, and the blind runs were executed by an independent sub-agent that took no part in the distillation and could not see the expected answers or assertions.
 
 - **Trigger blind tests**: 32 prompts × 8 capabilities — 30 / 32 hit exactly, 2 borderline-but-acceptable (t21, t22), **0 false activations**; all 8 cross-capability decoys were correctly avoided
 - **Output evaluation**: 8 capabilities × normal / boundary = 16 scenarios, **16 / 16 passed, 0 failures**
@@ -121,68 +121,31 @@ This repository publishes the evaluation material from the audit directory along
 
 ```text
 gann-45-years-skill/
-├── README.md                      ← Chinese version
-├── README.en.md                   ← you are reading this
-├── LICENSE                        ← MIT
-├── BOOK_OVERVIEW.md               ← whole-book comprehension (Adler four-step, stage 0 output)
-├── verified.md                    ← triple-verification conclusions for the 8 capability units
-├── INDEX.md                       ← skill map: capability table + dependencies + loading order
-├── TEST_SUMMARY.md                ← stage 4 stress-test summary (scope / structure checks / results)
-├── CANGJIE_ADAPTATION.md          ← Cangjie adaptation notes (text state / goals / evidence rules / boundaries)
-├── candidates/                    ← stage 1 extracted candidate pool (202 raw candidates, uncompiled)
-│   ├── framework.md               ← 40 framework candidates
-│   ├── principle.md               ← 79 principle candidates
-│   ├── case.md                    ← 39 case candidates
-│   ├── counter-example.md         ← 18 counter-example candidates
-│   └── glossary.md                ← 26 glossary candidates
-├── bundle/                        ← compile source of truth (the pre-compile layer)
-│   ├── verified.yaml              ← canonical definitions (slug / importance / destination / evidence)
-│   ├── cards/                     ← 8 capability cards (R / I / A1 / A2 / E / B)
-│   └── book/
-│       ├── overview.md            ← whole-book overview
-│       └── glossary.md            ← glossary
-├── single/                        ← single-entry build
-│   └── gann-45-years-skill/
-│       ├── SKILL.md               ← entry: triggers + routing table + loading rules
-│       ├── BUILD_MANIFEST.json    ← build manifest and file hashes
-│       ├── test-prompts.json      ← entry-level trigger and boundary cases (10)
-│       └── references/
-│           ├── overview.md        ← whole-book overview
-│           ├── capability-index.md  ← full intent and keyword index
-│           ├── cheatsheet.md      ← decision-rule quick reference
-│           ├── glossary.md        ← glossary
-│           └── capabilities/      ← 8 capability cards
-├── pack/                          ← multi-entry build (compact pack)
-│   ├── BUILD_MANIFEST.json
-│   ├── capability-destinations.json
-│   ├── gann-45-years-skill-router/
-│   │   ├── SKILL.md               ← source router entry
-│   │   ├── test-prompts.json      ← router entry cases (7)
-│   │   └── references/            ← 8 cards + indexes, called by the router
-│   ├── gann-trade-risk-checklist-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← trigger and boundary cases (9)
-│   ├── gann-percentage-levels-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← trigger and boundary cases (8)
-│   ├── gann-trend-safe-entry-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← trigger and boundary cases (9)
-│   ├── gann-time-cycle-calendar-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← trigger and boundary cases (9)
-│   ├── gann-swing-charts-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← trigger and boundary cases (8)
-│   └── gann-pyramid-profit-protect-skill/
-│       ├── SKILL.md
-│       └── test-prompts.json      ← trigger and boundary cases (8)
-└── evals/                          ← trigger blind tests and output evaluation material
-    ├── test-results.md             ← item-by-item scoring and rework log
-    ├── output-cases.md             ← 16 output-evaluation scenarios and fixed assertions
-    ├── trigger-suite.json          ← 32 trigger cases
-    ├── trigger-blind.json          ← blind-run record
-    └── test-prompts/               ← 9 per-entry case files (copies of the test-prompts.json in each skill directory)
+├── README.md              ← Chinese version
+├── README.en.md           ← you are reading this
+├── LICENSE                ← MIT
+├── BOOK_OVERVIEW.md       ← stage 0 output: Adler whole-book analysis
+├── INDEX.md               ← stage 3 output: skill map + dependencies
+├── verified.md            ← 8 units that passed triple verification
+├── TEST_SUMMARY.md        ← stage 4 output: stress-test summary
+├── CANGJIE_ADAPTATION.md  ← cangjie adaptation notes
+├── GITHUB_REPO.md         ← repository metadata
+├── test-results.md        ← test result records
+├── candidates/            ← stage 1 output: raw candidate pool
+│   ├── frameworks.md      ← framework and method candidates
+│   ├── principles.md      ← principle / rule / calculation candidates
+│   ├── cases.md           ← case candidates from the book
+│   ├── counter-examples.md← counter-example and boundary candidates
+│   └── glossary.md        ← terminology candidates
+├── rejected/              ← stage 1.5 output: rejected units + reasons
+├── bundle/                ← compilation source of truth
+│   ├── verified.yaml      ← capability metadata, criteria and destinations
+│   ├── cards/             ← capability card sources (six sections)
+│   └── book/              ← overview.md + glossary.md
+├── single/                ← single-mode build (one entry + all capability cards)
+│   └── gann-45-years-skill/SKILL.md  ← entry: triggers + routing table + loading rules
+└── pack/                  ← pack-mode build (one router + 6 promoted skills)
+    └── */SKILL.md         ← 7 skills, each shipping a test-prompts.json
 ```
 
 ## Usage

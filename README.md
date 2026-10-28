@@ -109,7 +109,7 @@ pack 里被晋级为独立 skill 的 6 张卡：
 
 ## 测试与验证
 
-本仓库把审计目录里的评测材料一起发布：`evals/test-prompts/` 是各入口的触发用例，`evals/trigger-suite.json` 与 `evals/trigger-blind.json` 是触发测试集与盲测记录，`evals/output-cases.md` 是输出评测场景与固定断言，`evals/test-results.md` 是逐项评分与修复记录——包括没做到的部分，不是只留通过记录。测试宿主为 ZCode / GLM-5.3，盲测由未参与蒸馏、看不到预期答案与断言的独立子智能体执行。
+本仓库把评测材料随 skill 一起发布：触发用例见各 skill 目录下的 `test-prompts.json`，逐项评分与修复记录见仓库根目录的 `test-results.md`——包括没做到的部分，不是只留通过记录。测试宿主为 ZCode / GLM-5.3，盲测由未参与蒸馏、看不到预期答案与断言的独立子智能体执行。
 
 - **触发精度盲测**：32 条 prompt × 8 项能力，完全命中 30 / 32，边缘可接受 2 条（t21、t22），**错误激活 0**；其中 8 条跨能力诱饵全部正确避开
 - **输出评测**：8 项能力 × 正常 / 边界两个场景，共 16 个场景，**16 / 16 全过，0 失败**
@@ -121,68 +121,31 @@ pack 里被晋级为独立 skill 的 6 张卡：
 
 ```text
 gann-45-years-skill/
-├── README.md                      ← 你正在看的
-├── README.en.md                   ← English version
-├── LICENSE                        ← MIT
-├── BOOK_OVERVIEW.md               ← 整书理解（Adler 四步拆解，阶段 0 产出）
-├── verified.md                    ← 8 个能力单元的三重验证结论
-├── INDEX.md                       ← skill 地图：能力总表 + 依赖关系 + 加载顺序
-├── TEST_SUMMARY.md                ← 阶段 4 压力测试摘要（范围 / 结构检查 / 结果）
-├── CANGJIE_ADAPTATION.md          ← 仓颉适配说明（文本状态 / 蒸馏目标 / 证据规则 / 使用边界）
-├── candidates/                    ← 阶段 1 提取候选池（202 条候选原文，未编译）
-│   ├── framework.md               ← 框架候选 40 条
-│   ├── principle.md               ← 原则候选 79 条
-│   ├── case.md                    ← 案例候选 39 条
-│   ├── counter-example.md         ← 反例候选 18 条
-│   └── glossary.md                ← 术语候选 26 条
-├── bundle/                        ← 编译事实源（未编译的原始层）
-│   ├── verified.yaml              ← 8 个能力的规范定义（slug / 重要度 / 去向 / 证据）
-│   ├── cards/                     ← 8 张能力卡正文（R / I / A1 / A2 / E / B）
-│   └── book/
-│       ├── overview.md            ← 整书概览
-│       └── glossary.md            ← 术语表
-├── single/                        ← 单一入口模式
-│   └── gann-45-years-skill/
-│       ├── SKILL.md               ← 入口：触发条件 + 路由表 + 加载规则
-│       ├── BUILD_MANIFEST.json    ← 编译清单与文件哈希
-│       ├── test-prompts.json      ← 入口级触发与边界用例（10 条）
-│       └── references/
-│           ├── overview.md        ← 整书概览
-│           ├── capability-index.md  ← 完整意图与关键词索引
-│           ├── cheatsheet.md      ← 决策规则速查
-│           ├── glossary.md        ← 术语表
-│           └── capabilities/      ← 8 张能力卡
-├── pack/                          ← 多入口模式（compact pack）
-│   ├── BUILD_MANIFEST.json
-│   ├── capability-destinations.json
-│   ├── gann-45-years-skill-router/
-│   │   ├── SKILL.md               ← 来源路由入口
-│   │   ├── test-prompts.json      ← 路由入口用例（7 条）
-│   │   └── references/            ← 8 张卡 + 索引，供 router 内部调用
-│   ├── gann-trade-risk-checklist-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← 触发与边界用例（9 条）
-│   ├── gann-percentage-levels-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← 触发与边界用例（8 条）
-│   ├── gann-trend-safe-entry-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← 触发与边界用例（9 条）
-│   ├── gann-time-cycle-calendar-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← 触发与边界用例（9 条）
-│   ├── gann-swing-charts-skill/
-│   │   ├── SKILL.md
-│   │   └── test-prompts.json      ← 触发与边界用例（8 条）
-│   └── gann-pyramid-profit-protect-skill/
-│       ├── SKILL.md
-│       └── test-prompts.json      ← 触发与边界用例（8 条）
-└── evals/                          ← 触发盲测与输出评测材料
-    ├── test-results.md             ← 逐项评分与修复记录
-    ├── output-cases.md             ← 16 个输出评测场景与固定断言
-    ├── trigger-suite.json          ← 32 条触发用例
-    ├── trigger-blind.json          ← 盲测执行记录
-    └── test-prompts/               ← 9 份入口级用例（与各 skill 目录内的 test-prompts.json 副本一致）
+├── README.md              ← 你正在看的
+├── README.en.md           ← English version
+├── LICENSE                ← MIT
+├── BOOK_OVERVIEW.md       ← 阶段 0 产出：全书 Adler 分析
+├── INDEX.md               ← 阶段 3 产出：skill 总览 + 依赖关系
+├── verified.md            ← 通过三重验证的 8 个单元
+├── TEST_SUMMARY.md        ← 阶段 4 产出：压力测试摘要
+├── CANGJIE_ADAPTATION.md  ← 仓颉适配说明
+├── GITHUB_REPO.md         ← 仓库元数据
+├── test-results.md        ← 测试结果记录
+├── candidates/            ← 阶段 1 产出：原始候选池
+│   ├── frameworks.md      ← 框架与方法候选
+│   ├── principles.md      ← 原则 / 规则 / 计算候选
+│   ├── cases.md           ← 书中案例候选
+│   ├── counter-examples.md← 反例与边界候选
+│   └── glossary.md        ← 术语候选
+├── rejected/              ← 阶段 1.5 产出：被淘汰的单元 + 原因
+├── bundle/                ← 编译事实源
+│   ├── verified.yaml      ← 能力元数据、判据与去向
+│   ├── cards/             ← 能力卡源文件（六段结构）
+│   └── book/              ← overview.md + glossary.md
+├── single/                ← single 模式（1 个入口 + 全部能力卡）
+│   └── gann-45-years-skill/SKILL.md  ← 入口：触发 + 路由表 + 加载规则
+└── pack/                  ← pack 模式（1 个路由入口 + 6 个晋级 skill）
+    └── */SKILL.md         ← 7 个 skill，每个附带 test-prompts.json
 ```
 
 ## 如何使用

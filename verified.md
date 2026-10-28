@@ -220,14 +220,15 @@ decision: verified
 
 | 单元 | 标题 | 覆盖任务 | 候选数 | decision |
 |---|---|---|---|---|
-| U1 | 交易风控与资金管理自检系统 | task-04 | 30+ | verified |
+| U1 | 交易风控与资金管理自检系统 | task-04 | 46 | verified |
 | U2 | 百分比阻力位与中点计算程序 | task-02 | 12 | verified |
 | U3 | 趋势确认与最安全买卖点判定 | task-01/03 | 24 | verified |
-| U4 | 时间周期变盘日历 | task-05/08 | 21 | verified |
+| U4 | 时间周期变盘日历 | task-05/08 | 22 | verified |
 | U5 | 3日图/9点摆动图程序 | task-06/07 | 13 | verified |
 | U6 | 成交量确认规则 | task-09 | 5 | verified |
 | U7 | 加码与利润保护规程 | task-10 | 6 | verified |
 | U8 | 多空配对交易流程 | task-11(半) | 4 | verified |
+| **合计** | 8 个能力单元（候选 ID 分项相加，同一 ID 跨单元重复引用时重复计入） | — | **132** | 8 verified |
 
 - 去重归并记录：f06≡p40（U2 保留双 ID）；f08≡p09、f09≡p13/p17（U4）；f21≡p25、f22≡p26、f23≡p27/p29（U1）；f17≡p49/p50、f18≡p51（U5）；f24≡p28（U7）；f33≡p39（U8）；f02≡p02（并入 U3 支撑原则+references）。
 - 用户轻确认：用户按"减少中途空闲"指示授权连续执行；四类分流（8 verified / reference 清单见 references.md / 1 needs_review / 0 rejected）与重要缺口（task-11 量化标准、task-12 时代性）将在最终交付时一并呈报复核。
