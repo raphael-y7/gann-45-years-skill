@@ -1,0 +1,70 @@
+{
+  "skill": "gann-time-cycle-calendar-skill",
+  "version": "0.1.0",
+  "source": "江恩华尔街45年 · 第2章规则4/8/10、第5/8/9章",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "市场2月5号见了底，接下来到什么时间窗口要小心",
+      "expected_behavior": "生成九级天数窗口清单+月周期+周年纪念日；附重标定限定",
+      "notes": "正面：日历生成"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这波调整已经7周了，时间上算不算到位",
+      "expected_behavior": "对照层级：超过45到49天看60到65天；7周=49天，接近最长档",
+      "notes": "正面：到位判断"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "距上个月低点已经42天了，要不要警惕变盘",
+      "expected_behavior": "命中42到49天窗口，给警惕结论+联用限定",
+      "notes": "正面：窗口命中"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "帮我用我自己市场的摆动记录重建时间周期参数",
+      "expected_behavior": "走自建参数分支：统计天数档位分布替换原书数字",
+      "notes": "正面：参数重建"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "调整这么久了，下方第一个重要支撑位在哪",
+      "expected_behavior": "应触发百分比价位能力",
+      "notes": "跨能力诱饵：价位"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "某股历史最高68.5最低21.4，算一下阻力位",
+      "expected_behavior": "应触发百分比价位能力",
+      "notes": "跨能力诱饵：价位"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "明天大盘会涨吗",
+      "expected_behavior": "不应调用：不预测方向",
+      "notes": "诱饵：预测"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "最近跌了很多，什么时候能止跌",
+      "expected_behavior": "应索取重要顶/底日期，不猜",
+      "notes": "边界：无日期"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "9月3号是不是有什么特别的日子",
+      "expected_behavior": "应说明周年纪念日概念并请用户提供本市场自己的极限高低点日期",
+      "notes": "边界：概念问询"
+    }
+  ]
+}

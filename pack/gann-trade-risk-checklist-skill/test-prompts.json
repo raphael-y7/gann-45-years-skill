@@ -1,0 +1,70 @@
+{
+  "skill": "gann-trade-risk-checklist-skill",
+  "version": "0.1.0",
+  "source": "江恩华尔街45年 · 第2章 24条永恒的规则",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我准备买这只股，现价24块，止损想设在21块，账户一共5万，帮我算算买多少合适",
+      "expected_behavior": "单笔风险=5000元，股数上限约1666股，附止损同时设置条款",
+      "notes": "正面：仓位计算"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我被套了20%，要不要再买点把成本摊下来",
+      "expected_behavior": "触发禁令：永不均分损失（不摊平），给正确动作=止损或按规则离场",
+      "notes": "正面：摊平诱因"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "经纪人刚打电话让我追加保证金，我该怎么办",
+      "expected_behavior": "追保=清仓信号，不补钱",
+      "notes": "正面：追保处置"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我亏15%了，要不要补仓",
+      "expected_behavior": "同摊平禁令，拒绝给补仓方案",
+      "notes": "正面：亏损补仓"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我看看这只股票现在趋势怎么样，能买吗",
+      "expected_behavior": "应触发趋势能力而非本卡：本卡不做方向判定",
+      "notes": "跨能力诱饵：趋势"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我浮盈30%了，该不该加仓，止损跟到哪",
+      "expected_behavior": "应触发加码保护能力而非本卡",
+      "notes": "跨能力诱饵：加码"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "明天大盘会涨吗",
+      "expected_behavior": "不应调用任何能力",
+      "notes": "诱饵：预测"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我随便买了100块的刮刮乐，怎么控制风险",
+      "expected_behavior": "不应调用：非股票交易",
+      "notes": "边界：非股票"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "账户8万，股价12.6，止损我到时候看情况再定",
+      "expected_behavior": "应拒绝直接给仓位，先索取止损价（缺输入不猜值）",
+      "notes": "边界：缺止损输入"
+    }
+  ]
+}

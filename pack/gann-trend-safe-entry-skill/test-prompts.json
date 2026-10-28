@@ -1,0 +1,70 @@
+{
+  "skill": "gann-trend-safe-entry-skill",
+  "version": "0.1.0",
+  "source": "江恩华尔街45年 · 第2章 规则1/2/9/10/11",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "帮我看看这只股票现在趋势怎么样，能买吗",
+      "expected_behavior": "按HH/HL结构判向；无法判则索取摆动序列",
+      "notes": "正面：趋势判定"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "最近几个摆动高低点是30.1、24.5、29.2、25.1，帮我判断这是多头还是空头结构",
+      "expected_behavior": "判空头（更低高点+更低低点），引用具体点位",
+      "notes": "正面：结构判据"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这只股票回调之后又起来了，现在算不算最安全的买点",
+      "expected_behavior": "核对四要素时序：筑底→首轮升势→次级调整更高底→穿越首轮顶",
+      "notes": "正面：最安全买点"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "前面那个高点今天冲过去了但只超过1%，这个突破有效吗",
+      "expected_behavior": "按容差判定（原书5点，现代须重标定并明示），容差内=不确认",
+      "notes": "正面：突破有效性"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我浮盈30%了，该不该加仓，止损跟到哪",
+      "expected_behavior": "应触发加码保护能力",
+      "notes": "跨能力诱饵：加码"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "3日图破了前一个低点，现在能直接做空吗？买多少",
+      "expected_behavior": "信号读取出摆动图卡，决策与仓位分别归本卡与风控卡；本卡不单独承接",
+      "notes": "跨能力诱饵：图表信号"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "明天大盘会涨吗",
+      "expected_behavior": "不应调用：不预测",
+      "notes": "诱饵：预测"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "某股现价30.2，能买吗",
+      "expected_behavior": "应说明仅凭现价无法判定，索取摆动序列",
+      "notes": "边界：无序列"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "跌了这么多应该到底了吧，我准备抄底",
+      "expected_behavior": "应提示10次预测顶底7次错，要求等确认信号",
+      "notes": "边界：抄底冲动"
+    }
+  ]
+}

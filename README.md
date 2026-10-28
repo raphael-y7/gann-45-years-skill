@@ -127,6 +127,14 @@ gann-45-years-skill/
 ├── BOOK_OVERVIEW.md               ← 整书理解（Adler 四步拆解，阶段 0 产出）
 ├── verified.md                    ← 8 个能力单元的三重验证结论
 ├── INDEX.md                       ← skill 地图：能力总表 + 依赖关系 + 加载顺序
+├── TEST_SUMMARY.md                ← 阶段 4 压力测试摘要（范围 / 结构检查 / 结果）
+├── CANGJIE_ADAPTATION.md          ← 仓颉适配说明（文本状态 / 蒸馏目标 / 证据规则 / 使用边界）
+├── candidates/                    ← 阶段 1 提取候选池（202 条候选原文，未编译）
+│   ├── framework.md               ← 框架候选 40 条
+│   ├── principle.md               ← 原则候选 79 条
+│   ├── case.md                    ← 案例候选 39 条
+│   ├── counter-example.md         ← 反例候选 18 条
+│   └── glossary.md                ← 术语候选 26 条
 ├── bundle/                        ← 编译事实源（未编译的原始层）
 │   ├── verified.yaml              ← 8 个能力的规范定义（slug / 重要度 / 去向 / 证据）
 │   ├── cards/                     ← 8 张能力卡正文（R / I / A1 / A2 / E / B）
@@ -137,6 +145,7 @@ gann-45-years-skill/
 │   └── gann-45-years-skill/
 │       ├── SKILL.md               ← 入口：触发条件 + 路由表 + 加载规则
 │       ├── BUILD_MANIFEST.json    ← 编译清单与文件哈希
+│       ├── test-prompts.json      ← 入口级触发与边界用例（10 条）
 │       └── references/
 │           ├── overview.md        ← 整书概览
 │           ├── capability-index.md  ← 完整意图与关键词索引
@@ -148,25 +157,32 @@ gann-45-years-skill/
 │   ├── capability-destinations.json
 │   ├── gann-45-years-skill-router/
 │   │   ├── SKILL.md               ← 来源路由入口
+│   │   ├── test-prompts.json      ← 路由入口用例（7 条）
 │   │   └── references/            ← 8 张卡 + 索引，供 router 内部调用
 │   ├── gann-trade-risk-checklist-skill/
-│   │   └── SKILL.md
+│   │   ├── SKILL.md
+│   │   └── test-prompts.json      ← 触发与边界用例（9 条）
 │   ├── gann-percentage-levels-skill/
-│   │   └── SKILL.md
+│   │   ├── SKILL.md
+│   │   └── test-prompts.json      ← 触发与边界用例（8 条）
 │   ├── gann-trend-safe-entry-skill/
-│   │   └── SKILL.md
+│   │   ├── SKILL.md
+│   │   └── test-prompts.json      ← 触发与边界用例（9 条）
 │   ├── gann-time-cycle-calendar-skill/
-│   │   └── SKILL.md
+│   │   ├── SKILL.md
+│   │   └── test-prompts.json      ← 触发与边界用例（9 条）
 │   ├── gann-swing-charts-skill/
-│   │   └── SKILL.md
+│   │   ├── SKILL.md
+│   │   └── test-prompts.json      ← 触发与边界用例（8 条）
 │   └── gann-pyramid-profit-protect-skill/
-│       └── SKILL.md
+│       ├── SKILL.md
+│       └── test-prompts.json      ← 触发与边界用例（8 条）
 └── evals/                          ← 触发盲测与输出评测材料
     ├── test-results.md             ← 逐项评分与修复记录
     ├── output-cases.md             ← 16 个输出评测场景与固定断言
     ├── trigger-suite.json          ← 32 条触发用例
     ├── trigger-blind.json          ← 盲测执行记录
-    └── test-prompts/               ← 各入口级触发与边界用例
+    └── test-prompts/               ← 9 份入口级用例（与各 skill 目录内的 test-prompts.json 副本一致）
 ```
 
 ## 如何使用
